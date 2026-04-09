@@ -8,159 +8,64 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #F7F5F0;
-    --surface: #EFECE5;
-    --ink: #1A1916;
-    --ink-muted: #6B6860;
-    --ink-faint: #B0ADA6;
-    --accent: #1F4E79;
-    --accent-light: #E8F0F8;
-    --rule: #DDD9D0;
+    --bg: #F7F5F0; --surface: #EFECE5; --ink: #1A1916;
+    --ink-muted: #6B6860; --ink-faint: #B0ADA6;
+    --accent: #1F4E79; --rule: #DDD9D0;
     --font-display: 'DM Serif Display', Georgia, serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
-    --max: 780px;
-    --pad: clamp(24px, 5vw, 64px);
+    --max: 780px; --pad: clamp(24px, 5vw, 64px);
   }
-
   html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased; }
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-body);
-    font-size: 15px;
-    line-height: 1.7;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(247,245,240,0.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--rule);
-    padding: 0 var(--pad);
-    height: 56px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .nav-name {
-    font-family: var(--font-display);
-    font-size: 17px;
-    color: var(--ink);
-    text-decoration: none;
-    letter-spacing: -0.01em;
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(247,245,240,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); padding: 0 var(--pad); height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-name { font-family: var(--font-display); font-size: 17px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
   .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a {
-    font-size: 13px; font-weight: 400; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--ink-muted);
-    text-decoration: none; transition: color 0.2s;
-  }
+  .nav-links a { font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent); }
 
-  /* ── LAYOUT ── */
   main { padding-top: 56px; }
   section { padding: clamp(56px, 8vw, 100px) var(--pad); }
   .inner { max-width: var(--max); margin: 0 auto; }
 
-  /* ── HERO ── */
-  #hero {
-    min-height: calc(100vh - 56px);
-    display: flex; align-items: center;
-    border-bottom: 1px solid var(--rule);
-  }
+  #hero { min-height: calc(100vh - 56px); display: flex; align-items: center; border-bottom: 1px solid var(--rule); }
   .hero-inner { max-width: var(--max); margin: 0 auto; width: 100%; }
-  .hero-label {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 20px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .hero-label::before {
-    content: ''; display: block; width: 28px; height: 1px; background: var(--accent);
-  }
-  h1 {
-    font-family: var(--font-display);
-    font-size: clamp(44px, 7vw, 72px);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 28px;
-  }
+  .hero-top { display: flex; align-items: flex-start; gap: 36px; margin-bottom: 4px; }
+  .hero-top-text { flex: 1; }
+  .hero-photo-wrap { width: 160px; height: 160px; flex-shrink: 0; border-radius: 50%; overflow: hidden; border: 3px solid var(--rule); box-shadow: 0 0 0 6px var(--bg); margin-top: 8px; }
+  .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .hero-label::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent); }
+  h1 { font-family: var(--font-display); font-size: clamp(44px, 7vw, 72px); line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
   h1 em { font-style: italic; color: var(--accent); }
-  .hero-sub {
-    font-size: 17px; font-weight: 300; color: var(--ink-muted);
-    max-width: 520px; line-height: 1.65; margin-bottom: 40px;
-  }
-  .hero-meta {
-    display: flex; flex-wrap: wrap; gap: 20px;
-    padding-top: 32px; border-top: 1px solid var(--rule);
-  }
+  .hero-sub { font-size: 17px; font-weight: 300; color: var(--ink-muted); max-width: 520px; line-height: 1.65; margin-bottom: 40px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; padding-top: 32px; border-top: 1px solid var(--rule); }
   .meta-item { font-size: 13px; color: var(--ink-muted); }
   .meta-item strong { color: var(--ink); font-weight: 500; display: block; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 11px 22px; border-radius: 2px;
-    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
-    text-decoration: none; transition: all 0.2s;
-  }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 2px; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-decoration: none; transition: all 0.2s; }
   .btn-primary { background: var(--accent); color: #fff; }
   .btn-primary:hover { background: #163a5a; }
   .btn-ghost { border: 1px solid var(--rule); color: var(--ink-muted); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
 
-  /* ── SECTION HEADINGS ── */
-  .sec-label {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 8px;
-  }
-  h2 {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 4vw, 40px);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    color: var(--ink);
-    margin-bottom: 40px;
-  }
+  .sec-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; line-height: 1.1; color: var(--ink); margin-bottom: 40px; }
 
-  /* ── ABOUT ── */
   #about { background: var(--surface); }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
   .about-text p { color: var(--ink-muted); margin-bottom: 16px; font-size: 15px; }
   .about-text p:last-child { margin-bottom: 0; }
-  .competencies { display: flex; flex-direction: column; gap: 0; }
-  .competency-item {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--rule);
-    font-size: 14px; color: var(--ink);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .competency-item::before {
-    content: ''; display: block; width: 6px; height: 6px;
-    background: var(--accent); border-radius: 50%; flex-shrink: 0;
-  }
+  .competency-item { padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+  .competency-item::before { content: ''; display: block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
   .competency-item:first-child { border-top: 1px solid var(--rule); }
 
-  /* ── EXPERIENCE ── */
   #experience { border-bottom: 1px solid var(--rule); }
-  .exp-list { display: flex; flex-direction: column; gap: 0; }
-  .exp-item {
-    padding: 36px 0;
-    border-bottom: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 32px;
-  }
+  .exp-item { padding: 36px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 200px 1fr; gap: 32px; }
   .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .exp-meta { padding-top: 3px; }
   .exp-company { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
   .exp-period { font-size: 12px; color: var(--ink-faint); }
-  .exp-title { font-family: var(--font-display); font-size: 20px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
   .exp-context { font-size: 13px; color: var(--ink-faint); font-style: italic; margin-bottom: 16px; }
   .exp-role { margin-bottom: 20px; }
   .exp-role:last-child { margin-bottom: 0; }
@@ -169,17 +74,12 @@
   .exp-bullets li { font-size: 14px; color: var(--ink-muted); padding-left: 16px; position: relative; }
   .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--ink-faint); }
 
-  /* ── SKILLS ── */
   #skills { background: var(--surface); }
   .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
   .skill-group-label { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 16px; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag {
-    font-size: 12px; color: var(--ink); background: var(--bg);
-    border: 1px solid var(--rule); padding: 5px 12px; border-radius: 2px;
-  }
+  .tag { font-size: 12px; color: var(--ink); background: var(--bg); border: 1px solid var(--rule); padding: 5px 12px; border-radius: 2px; }
 
-  /* ── EDUCATION ── */
   #education { border-bottom: 1px solid var(--rule); }
   .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
   .edu-item { padding: 24px 0; border-bottom: 1px solid var(--rule); }
@@ -193,64 +93,29 @@
   .cert-name { color: var(--ink); font-weight: 400; }
   .cert-org { font-size: 12px; color: var(--ink-faint); margin-top: 2px; }
 
-  /* ── CONTACT ── */
-  #contact {
-    background: var(--ink);
-    color: #fff;
-  }
+  #contact { background: var(--ink); color: #fff; }
   #contact .sec-label { color: #8BA8C4; }
   #contact h2 { color: #fff; margin-bottom: 16px; }
   #contact .sub { color: #8B8A86; font-size: 15px; margin-bottom: 40px; max-width: 460px; }
   .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
-  .contact-link {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 11px 20px; border: 1px solid #333330;
-    font-size: 13px; color: #B8B5AF; text-decoration: none;
-    border-radius: 2px; transition: all 0.2s;
-  }
+  .contact-link { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border: 1px solid #333330; font-size: 13px; color: #B8B5AF; text-decoration: none; border-radius: 2px; transition: all 0.2s; }
   .contact-link:hover { border-color: #8BA8C4; color: #fff; }
   .footer-note { margin-top: 56px; padding-top: 24px; border-top: 1px solid #2A2926; font-size: 12px; color: #4A4946; }
 
-  /* ── ANIMATIONS ── */
-  .reveal {
-    opacity: 0; transform: translateY(18px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
     .about-grid, .skills-grid, .edu-grid { grid-template-columns: 1fr; gap: 32px; }
     .exp-item { grid-template-columns: 1fr; gap: 8px; }
     .nav-links { display: none; }
-  }
-
-  /* ── PHOTO ── */
-  .hero-photo-wrap {
-    width: 160px; height: 160px; flex-shrink: 0;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--rule);
-    box-shadow: 0 0 0 6px var(--bg);
-  }
-  .hero-photo-wrap img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top;
-    display: block;
-  }
-  .hero-top {
-    display: flex; align-items: flex-start; gap: 36px; margin-bottom: 28px;
-  }
-  .hero-top-text { flex: 1; }
-  @media (max-width: 500px) {
     .hero-top { flex-direction: column; gap: 20px; }
     .hero-photo-wrap { width: 120px; height: 120px; }
   }
-
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-name">Arun Soman</a>
   <ul class="nav-links">
@@ -264,7 +129,6 @@
 
 <main>
 
-  <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
       <div class="hero-top">
@@ -290,7 +154,6 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="inner">
       <div class="sec-label reveal">About</div>
@@ -302,30 +165,26 @@
           <p>I champion delivery excellence through disciplined Agile methodologies, amplified by the strategic adoption of Agentic AI to drive intelligent, scalable outcomes.</p>
         </div>
         <div class="reveal">
-          <div class="competencies">
-            <div class="competency-item">Strategic Agile Leadership</div>
-            <div class="competency-item">Agentic AI Integration</div>
-            <div class="competency-item">Product Lifecycle Management</div>
-            <div class="competency-item">Stakeholder Engagement</div>
-            <div class="competency-item">Requirements Elicitation</div>
-            <div class="competency-item">Agile Coaching &amp; Mentorship</div>
-            <div class="competency-item">ERP Solutions Delivery</div>
-            <div class="competency-item">Cross-functional Team Leadership</div>
-            <div class="competency-item">Solution Architecture</div>
-          </div>
+          <div class="competency-item">Strategic Agile Leadership</div>
+          <div class="competency-item">Agentic AI Integration</div>
+          <div class="competency-item">Product Lifecycle Management</div>
+          <div class="competency-item">Stakeholder Engagement</div>
+          <div class="competency-item">Requirements Elicitation</div>
+          <div class="competency-item">Agile Coaching &amp; Mentorship</div>
+          <div class="competency-item">ERP Solutions Delivery</div>
+          <div class="competency-item">Cross-functional Team Leadership</div>
+          <div class="competency-item">Solution Architecture</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
   <section id="experience">
     <div class="inner">
       <div class="sec-label reveal">Experience</div>
       <h2 class="reveal">15+ years across<br>four continents of delivery.</h2>
       <div class="exp-list">
 
-        <!-- Gadgeon -->
         <div class="exp-item reveal">
           <div class="exp-meta">
             <div class="exp-company">Gadgeon Smart Systems</div>
@@ -359,7 +218,6 @@
           </div>
         </div>
 
-        <!-- Thomsun -->
         <div class="exp-item reveal">
           <div class="exp-meta">
             <div class="exp-company">Thomsun Infocare</div>
@@ -384,7 +242,6 @@
           </div>
         </div>
 
-        <!-- IBS -->
         <div class="exp-item reveal">
           <div class="exp-meta">
             <div class="exp-company">IBS Software</div>
@@ -427,7 +284,6 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
     <div class="inner">
       <div class="sec-label reveal">Skills</div>
@@ -436,37 +292,22 @@
         <div class="reveal">
           <div class="skill-group-label">Tools &amp; Platforms</div>
           <div class="skill-tags">
-            <span class="tag">Jira</span>
-            <span class="tag">Zoho Projects</span>
-            <span class="tag">Redmine</span>
-            <span class="tag">GitLab</span>
-            <span class="tag">SVN</span>
-            <span class="tag">SQL Developer</span>
-            <span class="tag">MS Project</span>
-            <span class="tag">MS Visio</span>
-            <span class="tag">Office 365</span>
-            <span class="tag">Figma</span>
-            <span class="tag">Adobe XD</span>
-            <span class="tag">Balsamiq</span>
-            <span class="tag">Draw.io</span>
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">WordPress</span>
+            <span class="tag">Jira</span><span class="tag">Zoho Projects</span><span class="tag">Redmine</span>
+            <span class="tag">GitLab</span><span class="tag">SVN</span><span class="tag">SQL Developer</span>
+            <span class="tag">MS Project</span><span class="tag">MS Visio</span><span class="tag">Office 365</span>
+            <span class="tag">Figma</span><span class="tag">Adobe XD</span><span class="tag">Balsamiq</span>
+            <span class="tag">Draw.io</span><span class="tag">HTML/CSS</span><span class="tag">WordPress</span>
             <span class="tag">Visual Studio Code</span>
           </div>
         </div>
         <div class="reveal">
           <div class="skill-group-label">Industry &amp; Domain Knowledge</div>
           <div class="skill-tags">
-            <span class="tag">Telecommunications</span>
-            <span class="tag">Aviation MRO</span>
-            <span class="tag">ERP Systems</span>
-            <span class="tag">Inventory Management</span>
-            <span class="tag">HRMS</span>
-            <span class="tag">Accounts Payable/Receivable</span>
-            <span class="tag">Manufacturing</span>
-            <span class="tag">Labour Time &amp; Attendance</span>
-            <span class="tag">Engineering Control</span>
-            <span class="tag">Purchase/Sales Management</span>
+            <span class="tag">Telecommunications</span><span class="tag">Aviation MRO</span>
+            <span class="tag">ERP Systems</span><span class="tag">Inventory Management</span>
+            <span class="tag">HRMS</span><span class="tag">Accounts Payable/Receivable</span>
+            <span class="tag">Manufacturing</span><span class="tag">Labour Time &amp; Attendance</span>
+            <span class="tag">Engineering Control</span><span class="tag">Purchase/Sales Management</span>
             <span class="tag">SaaS Products</span>
           </div>
         </div>
@@ -474,7 +315,6 @@
     </div>
   </section>
 
-  <!-- EDUCATION -->
   <section id="education">
     <div class="inner">
       <div class="sec-label reveal">Education &amp; Certifications</div>
@@ -526,16 +366,15 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="inner">
       <div class="sec-label">Contact</div>
       <h2>Let's connect.</h2>
       <p class="sub">Open to Senior Product Manager, Engineering Manager, IT Delivery Manager, and related leadership roles — remote across Australia or hybrid in Newcastle, NSW.</p>
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#e08192958ece938f8d818ece90a0878d81898cce838f8d" class="contact-link">
+        <a href="mailto:arun.soman.p@gmail.com" class="contact-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-          <span class="__cf_email__" data-cfemail="6d0c1f1803431e02000c03431d2d0a000c0401430e0200">[email&#160;protected]</span>
+          arun.soman.p@gmail.com
         </a>
         <a href="tel:+919496351778" class="contact-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.93v1.99z"/></svg>
@@ -550,16 +389,23 @@
           Newcastle, NSW 2300
         </a>
       </div>
-      <div class="footer-note">
-        Arun Soman · A-CSPO · Australian Subclass 491 Visa · Full Work Rights Across Australia
-      </div>
+      <div class="footer-note">Arun Soman · A-CSPO · Australian Subclass 491 Visa · Full Work Rights Across Australia</div>
     </div>
   </section>
 
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setT
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
